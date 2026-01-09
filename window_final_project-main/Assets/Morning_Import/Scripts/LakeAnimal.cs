@@ -23,15 +23,15 @@ public class LakeAnimal : MonoBehaviour
     public Slider patienceSlider;
     public GameObject testPaperVisual;
     public SpriteRenderer bodyRenderer;
-    //0108/////////////////////////////////////////////////////////////////////////
-    public Sprite happySprite;  // 拖入開心的圖片
+   
+    public Sprite happySprite; 
     public Sprite angrySprite;
     public Sprite[] happyAnimationSprites;
     public float animationSpeed = 0.15f;
     
     
     public SpriteRenderer emotionRenderer;
-    //0108/////////////////////////////////////////////////////////////////////////
+    
     [Header("數值設定")]
     public float waitTime = 10f;
     public bool hasTestPaper = false;
@@ -48,7 +48,7 @@ public class LakeAnimal : MonoBehaviour
         this.hasTestPaper = isElite;
         this.waitTime = duration;
 
-        // 更新 UI 狀態
+        
         if (patienceSlider != null)
         {
             patienceSlider.minValue = 0;
@@ -145,7 +145,7 @@ public class LakeAnimal : MonoBehaviour
         if (!isSatiated) Fail();
     }
 
-    // --- 餵食判定 ---
+   
     public void ReceiveFood(ItemType food)
     {
         if (isSatiated) return;
@@ -165,7 +165,7 @@ public class LakeAnimal : MonoBehaviour
     }
 
 
-    //0108///////////////////////////////////////////////////////////////////////////////
+   
     IEnumerator PlayHappyAnimation()
     {
         Debug.Log("<color=cyan>【動畫】協程開始跑了！</color>");
@@ -175,7 +175,7 @@ public class LakeAnimal : MonoBehaviour
 
         int frame = 0;
         float elapsed = 0f;
-        float duration = 1.0f; // 讓它播久一點方便測試
+        float duration = 1.0f;
 
         while (elapsed < duration)
         {
@@ -193,13 +193,12 @@ public class LakeAnimal : MonoBehaviour
         Debug.Log("<color=cyan>【動畫】播放完畢，關閉物件。</color>");
         emotionRenderer.gameObject.SetActive(false);
     }
-    /////////////////////////////////////////////////////////////////////////////////
+   
     void Success()
     {
         if (isSatiated) return;
         isSatiated = true;
-        //0108///////////////////////////////////////////////////////////////////////////////
-        // 1. 開心反應
+       
         bodyRenderer.sprite = happySprite;
         bodyRenderer.color = Color.white;
         if (emotionRenderer != null)
@@ -208,9 +207,7 @@ public class LakeAnimal : MonoBehaviour
             StartCoroutine(PlayHappyAnimation());
         }
         
-        //0108///////////////////////////////////////////////////////////////////////////////
-
-        // 2. 增加對應動物的塔數量
+       
         if (MorningLevelManager.Instance != null)
         {
             MorningLevelManager.Instance.AddAnimalCount(myType);
@@ -221,7 +218,7 @@ public class LakeAnimal : MonoBehaviour
         }
 
      
-        // 3. 餵食成功後，讓手上的食物消失
+       
         if (MouseFollower.Instance != null)
         {
             MouseFollower.Instance.ClearHeldItem();
@@ -237,7 +234,7 @@ public class LakeAnimal : MonoBehaviour
       
         if (MouseFollower.Instance != null && MouseFollower.Instance.heldFoodType != ItemType.None)
         {
-            // 拿手上的東西去跟鴨子想要的 favoriteFood 比較
+           
             ReceiveFood(MouseFollower.Instance.heldFoodType);
         }
     }
@@ -254,19 +251,18 @@ public class LakeAnimal : MonoBehaviour
         }
 
         if (bodyRenderer != null)
-        {//0108///////////////////////////////////////////////////////////////////////////////
-            //bodyRenderer.color = Color.red;
+        {
             bodyRenderer.sprite = angrySprite;
-            // 確保顏色是白色，圖片才不會暗淡
+           
             bodyRenderer.color = Color.white;
-          //0108///////////////////////////////////////////////////////////////////////////////
+         
         }
         StartCoroutine(JumpOut());
     }
 
     IEnumerator JumpOut()
     {
-        yield return new WaitForSeconds(0.8f);/////0108
+        yield return new WaitForSeconds(0.8f);
         float t = 0;
         Vector3 startPos = transform.localPosition;
         Vector3 endPos = startPos + Vector3.down * 3f;
@@ -309,7 +305,7 @@ public class LakeAnimal : MonoBehaviour
                 foodIconDisplay.gameObject.SetActive(true);
                 foodIconDisplay.sortingOrder = 999;
 
-                // 加入這一行來確認
+               
                 Debug.Log($"<color=cyan>成功！{gameObject.name} 想要吃 {favoriteFood}，已更換圖片。</color>");
                 return;
             }

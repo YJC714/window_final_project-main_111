@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class CookingStation : MonoBehaviour
 {
-    // --- 【單例模式】 讓 ToolSource 找得到它 ---
+   
     public static CookingStation Instance;
     private bool isCooking = false;
     [System.Serializable]
@@ -104,19 +104,18 @@ public class CookingStation : MonoBehaviour
     }
     void CheckRecipes()
     {
-        // 牛肉湯公式：牛肉 + 碗 + 水
+       
         if (itemsOnTable.Contains(ItemType.Beef) && itemsOnTable.Contains(ItemType.Bowl) && itemsOnTable.Contains(ItemType.WaterPot))
         {
             CompleteCooking(ItemType.BeefSoup);
         }
 
-        // 咖啡公式：磨豆機 + 咖啡豆 + 水
         else if ( itemsOnTable.Contains(ItemType.CoffeeBean) && itemsOnTable.Contains(ItemType.WaterPot))
         {
             
             CompleteCooking(ItemType.Coffee);
         }
-        // 光餐公式：三色豆 + 螢光咖哩 + 電話線
+        
         else if (itemsOnTable.Contains(ItemType.Beans) && itemsOnTable.Contains(ItemType.Curry) && itemsOnTable.Contains(ItemType.PhoneLine))
         {
            
@@ -131,19 +130,19 @@ public class CookingStation : MonoBehaviour
 
     void CompleteCooking(ItemType result)
     {
-        // 清除食材邏輯與視覺
+        
         itemsOnTable.Clear();
         foreach (GameObject obj in spawnedVisuals) { Destroy(obj); }
         spawnedVisuals.Clear();
-        // 設定成品
+        
         finishedProduct = result;
       
-        // 在檯面上顯示成品圖案
+        
         SpawnItemVisual(result);
     }
     private Sprite GetFinishedProductSprite()
     {
-        // 從你現有的 visualDatabase 找尋對應成品的 Prefab
+       
         foreach (var item in visualDatabase)
         {
             if (item.type == finishedProduct)
@@ -159,7 +158,7 @@ public class CookingStation : MonoBehaviour
         
         Sprite foodSprite = GetFinishedProductSprite();
 
-        // 交給滑鼠 
+       
         if (MouseFollower.Instance != null && foodSprite != null)
         {
             MouseFollower.Instance.PickUpFood(foodSprite, finishedProduct);
@@ -173,7 +172,7 @@ public class CookingStation : MonoBehaviour
             spawnedVisuals.Clear();
             itemsOnTable.Clear();
 
-            // 重設狀態
+            
             finishedProduct = ItemType.None;
         }
         else

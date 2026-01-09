@@ -10,7 +10,7 @@ public class BentoBox : MonoBehaviour
         
         transform.localScale = new Vector3(0.35f, 0.35f, 1f);
 
-        // ½T«O Z ¶b¥¿½T
+       
         Vector3 pos = transform.position;
         pos.z = -5f;
         transform.position = pos;

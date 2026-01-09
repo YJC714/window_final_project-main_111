@@ -1,16 +1,15 @@
 using UnityEngine;
 
-// Enum 保持原樣
+
 public enum ItemType
 {
     None,
-    Beef, Bowl, WaterPot,      // 牛肉湯組
-    CoffeeBean,                // 咖啡組
-    Beans, Curry, PhoneLine,   // 光餐組
-    BeefSoup, Coffee, DormMeal, Bento // 成品
+    Beef, Bowl, WaterPot,     
+    CoffeeBean,                
+    Beans, Curry, PhoneLine,   
+    BeefSoup, Coffee, DormMeal, Bento
 }
 
-// 類別名稱改為 CookingGameManager
 public class CookingGameManager : MonoBehaviour
 {
     public static CookingGameManager Instance;
