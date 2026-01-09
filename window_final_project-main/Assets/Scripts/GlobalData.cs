@@ -10,7 +10,6 @@ public class GlobalData : MonoBehaviour
     public int turtleCount = 0;
     public int salamanderCount = 0;
 
-    // 備份用的變數 (記錄早上結束時的總量)
     private int startDuckCount = 0;
     private int startSquirrelCount = 0;
     private int startTurtleCount = 0;
@@ -24,7 +23,7 @@ public class GlobalData : MonoBehaviour
 
     public bool isFirstLoad = true;
     public int currentLevelIndex = 0;
-    ///0108
+
     [Header("進度紀錄")]
     public bool isL1Cleared;
     public bool isL2Cleared;
@@ -37,28 +36,27 @@ public class GlobalData : MonoBehaviour
         isL2Cleared = false;
         Debug.Log("【存檔系統】關卡進度已重置。");
     }
-    ////////////////////////////////////
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadGameProgress();//0108
+            LoadGameProgress();
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    // 0108/////////////////////////////////////////////////////////
+
     public void SaveLevelProgress(int levelID)
     {
         
         PlayerPrefs.SetInt("LevelCleared_" + levelID, 1);
         PlayerPrefs.Save();
         
-        // 存完立刻重新載入變數，確保資料同步
         if (levelID == 0) isL1Cleared = true;
         if (levelID == 1) isL2Cleared = true;
         
@@ -68,19 +66,17 @@ public class GlobalData : MonoBehaviour
 
     public void LoadGameProgress()
     {
-        // 讀取進度
         isL1Cleared = PlayerPrefs.GetInt("LevelCleared_0", 0) == 1;
         isL2Cleared = PlayerPrefs.GetInt("LevelCleared_1", 0) == 1;
     }
-    /////////////////////////////////////////////////////////
-    // --- 增加庫存 (早上用) ---
+
     public void AddTower(string type)
     {
         switch (type)
         {
             case "Duck":
                 duckCount++;
-                startDuckCount++; // 備份也要加
+                startDuckCount++;
                 break;
             case "Squirrel":
                 squirrelCount++;
@@ -95,10 +91,10 @@ public class GlobalData : MonoBehaviour
                 startSalamanderCount++;
                 break;
         }
-        SaveMorningData(); // 呼叫存檔(Log)
+        SaveMorningData(); 
     }
 
-    // --- 消耗庫存 (晚上用) ---
+
     public bool ConsumeTower(string type)
     {
         switch (type)
@@ -116,10 +112,9 @@ public class GlobalData : MonoBehaviour
                 if (salamanderCount > 0) { salamanderCount--; return true; }
                 break;
         }
-        return false; // 數量不夠
+        return false; 
     }
 
-    // --- 查詢庫存數量 (給按鈕鎖定用) ---
     public int GetTowerCount(string type)
     {
         switch (type)
@@ -132,7 +127,6 @@ public class GlobalData : MonoBehaviour
         }
     }
 
-    // --- 解鎖升級 ---
     public void UnlockUpgrade(string animalType)
     {
         switch (animalType)
@@ -145,7 +139,6 @@ public class GlobalData : MonoBehaviour
         Debug.Log($"恭喜！解鎖了 {animalType} 的升級權限！");
     }
 
-    // --- 晚上重試時呼叫，把庫存補滿 ---
     public void RestoreInventory()
     {
         duckCount = startDuckCount;
@@ -155,7 +148,6 @@ public class GlobalData : MonoBehaviour
         Debug.Log("【GlobalData】庫存已回溯，可以重新挑戰！");
     }
 
-    // --- 重置資料 (回到主選單重新開始時用) ---
     public void ResetMorningData()
     {
         duckCount = 0; squirrelCount = 0; turtleCount = 0; salamanderCount = 0;
@@ -167,7 +159,6 @@ public class GlobalData : MonoBehaviour
         unlockSalamanderUpgrade = false;
     }
 
-    //顯示目前數據 (Log 用)
     public void SaveMorningData()
     {
         Debug.Log($"【全域存檔】目前塔數量: 鴨{duckCount}, 松{squirrelCount}, 龜{turtleCount}, 蠑{salamanderCount}");

@@ -115,18 +115,12 @@ public class GameManager : MonoBehaviour
     {
         gameIsOver = true;
         Debug.Log("LEVEL WON!");
-        ///////////0108///////////////////////////////////////////////////////////////////////////
-        ///
         if (GlobalData.Instance != null)
         {
-            // 直接抓取你選單傳進來的那個 ID
             int currentLevel = MorningLevelManager.SelectedLevelFromMenu;
             Debug.Log("正在存檔，目前通關的 ID 是: " + currentLevel);
-            // 呼叫通用的存檔方法
             GlobalData.Instance.SaveLevelProgress(currentLevel);
         }
-        ///////////////////////////////////////////////////////////////////////////
-
         if (levelWonUI != null)
         {
             levelWonUI.SetActive(true);
@@ -137,12 +131,8 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1f;
-
-        // 載入 Build Settings 裡的「下一個場景」
-        // 例如現在是 Level 1 (Index 1)，就會載入 Level 2 (Index 2)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    // --- 新增：回到主選單 (給 暫停頁面的房子 & 勝利頁面的 Continue 用) ---
     public void GoToMenu()
     {
         Time.timeScale = 1f;

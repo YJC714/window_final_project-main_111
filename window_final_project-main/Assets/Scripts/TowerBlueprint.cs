@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[System.Serializable] // 這行一定要加
+[System.Serializable] 
 public class TowerBlueprint
 {
     public string name;       // 塔的名字
