@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Morning_Import/Scenes/MenuScene.unity
     guid: 2b747f66012756b4b9b3698eaa9d498d
   - enabled: 1
+    path: Assets/Morning_Import/Scenes/StartScene.unity
+    guid: 498144bd26eabb546bcf652a7a6f7944
+  - enabled: 1
     path: Assets/Morning_Import/Scenes/PlayScene.unity
     guid: acc1dd11995cf8f438bffd5360241ac2
   - enabled: 1
