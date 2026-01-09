@@ -37,8 +37,9 @@ public class Bullet : MonoBehaviour
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        //關鍵修正：因為你的圖片是「朝上」的，所以要減 90 度
-        transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+        //朝上=減 90 度
+        //transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     void HitTarget()

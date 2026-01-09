@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4639601478584979908}
   - component: {fileID: 6714144466399476897}
   m_Layer: 0
-  m_Name: Bullet_Arrow 1
+  m_Name: Bullet_duck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.75, y: 4.18882, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: 479684271
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8421968652705322883, guid: 325b1f210f1ad034b90e1d2173eae8bb, type: 3}
+  m_Sprite: {fileID: -5450730861195745065, guid: 775c9d7cdc8deeb48969f0a4a35475e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.25, y: 0.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 20
-  damage: 80
-  explosionRadius: 0
+  damage: 40
+  explosionRadius: 0.5
   impactEffect: {fileID: 0}
 --- !u!50 &6714144466399476897
 Rigidbody2D:

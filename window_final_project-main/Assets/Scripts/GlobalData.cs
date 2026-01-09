@@ -23,6 +23,7 @@ public class GlobalData : MonoBehaviour
     public bool unlockSalamanderUpgrade = false;
 
     public bool isFirstLoad = true;
+    public int currentLevelIndex = 0;
     ///0108
     [Header("¶i«×¬ö¿ý")]
     public bool isL1Cleared;

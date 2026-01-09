@@ -250,6 +250,9 @@ public class MorningLevelManager : MonoBehaviour
         if (GlobalData.Instance != null)
         {
             GlobalData.Instance.SaveMorningData();
+
+            GlobalData.Instance.currentLevelIndex = this.currentLevelIndex;
+            Debug.Log("【關卡傳遞】已將關卡 ID " + this.currentLevelIndex + " 存入 GlobalData");
         }
         
 
