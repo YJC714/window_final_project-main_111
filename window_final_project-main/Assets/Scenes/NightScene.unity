@@ -1138,7 +1138,7 @@ MonoBehaviour:
   waves:
   - name: 
     enemyPrefab: {fileID: 3353538616998805984, guid: 02af737631e9c2c46be9c86182286849, type: 3}
-    count: 1
+    count: 2
     rate: 1
   - name: 
     enemyPrefab: {fileID: 5095414069551556733, guid: b62d2c0f16abdb64b920432fc6e800ec, type: 3}
@@ -1146,19 +1146,19 @@ MonoBehaviour:
     rate: 2
   - name: 
     enemyPrefab: {fileID: 5095414069551556733, guid: 4de096104b35b92429ed7885cef08995, type: 3}
-    count: 1
+    count: 4
     rate: 1
   - name: 
     enemyPrefab: {fileID: 3353538616998805984, guid: b94616755d6dfa94ea028f8626162041, type: 3}
-    count: 1
+    count: 4
     rate: 1
   - name: 
     enemyPrefab: {fileID: 5095414069551556733, guid: 5ba792e29c59c1e4cbb98d1bca769a49, type: 3}
-    count: 3
+    count: 8
     rate: 3
   - name: 
     enemyPrefab: {fileID: 3353538616998805984, guid: 2f9d274e416aa4d47801e6e310506998, type: 3}
-    count: 3
+    count: 9
     rate: 3
   routes:
   - {fileID: 196088407}

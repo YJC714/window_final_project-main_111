@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99bc76c5d72e7f42b4a51cf2354e2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tower
-  range: 1.8
+  range: 2
   fireRate: 1
   bulletPrefab: {fileID: 6083594913328522186, guid: 4f8e8486759521840a441498c2c67296, type: 3}
   firePoint: {fileID: 0}

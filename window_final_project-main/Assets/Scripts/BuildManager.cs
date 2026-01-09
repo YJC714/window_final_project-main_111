@@ -128,9 +128,24 @@ public class BuildManager : MonoBehaviour
             // 防呆：如果直接測晚上場景，預設給過，方便測試
             isUnlocked = true;
         }
+        if (selectedSpot.isUpgraded)
+        {
+            // 如果這座塔已經升級過了 -> 鎖死按鈕
+            btnUpgrade.interactable = false;
 
+            // (選用) 你甚至可以改文字，告訴玩家已經滿級了
+            // btnUpgrade.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "MAX";
+        }
+        else
+        {
+            // 如果還沒升級 -> 看權限決定能不能按
+            btnUpgrade.interactable = isUnlocked;
+
+            // (選用) 恢復文字
+            // btnUpgrade.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "UPGRADE";
+        }
         // 3. 設定按鈕狀態
-        btnUpgrade.interactable = isUnlocked;
+        //btnUpgrade.interactable = isUnlocked;
 
         // (選用) 如果鎖住，把按鈕變半透明
         // var colors = btnUpgrade.colors;

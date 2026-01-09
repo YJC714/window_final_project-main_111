@@ -6,7 +6,7 @@ public class BuildSpot : MonoBehaviour, IPointerClickHandler
 {
     public GameObject currentTower;
     public TowerBlueprint towerBlueprint;
-    private bool isUpgraded = false;
+    public bool isUpgraded = false;
 
     // 3. 我們不再用 OnMouseDown，改用這個更強大的函式
     public void OnPointerClick(PointerEventData eventData)

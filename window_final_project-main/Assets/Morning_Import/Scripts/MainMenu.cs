@@ -42,6 +42,10 @@ public class MainMenu : MonoBehaviour
     public void StartGame(int levelID)
     {
         Debug.Log("點擊了關卡：" + levelID);
+        if (GlobalData.Instance != null)
+        {
+            GlobalData.Instance.ResetMorningData();
+        }
         MorningLevelManager.SelectedLevelFromMenu = levelID;
         SceneManager.LoadScene("PlayScene"); // 永遠載入同一個場景
     }
